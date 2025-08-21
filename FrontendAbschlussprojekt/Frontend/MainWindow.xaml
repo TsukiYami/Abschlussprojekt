@@ -10,9 +10,28 @@
     Height="450"
     mc:Ignorable="d">
     <Grid>
-        <Frame
-            x:Name="MainFrame"
-            NavigationUIVisibility="Hidden"
-            Source="Page/Login.xaml" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20px" />
+            <RowDefinition Height="30px" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30px" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30px" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="30px" />
+        </Grid.ColumnDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Background="Transparent" />
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Frame
+                x:Name="MainFrame"
+                NavigationUIVisibility="Hidden"
+                Source="Page/Login.xaml" />
+        </Grid>
     </Grid>
 </Window>
