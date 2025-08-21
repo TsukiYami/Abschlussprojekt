@@ -3,3 +3,12 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+/.idea/
+/.vscode/
+/.vs/
+/FrontendAbschlussprojekt/.vscode/
+/FrontendAbschlussprojekt/.idea/
+/FrontendAbschlussprojekt/.vs/
+/BackendAbschlussprojekt/.vscode/
+/BackendAbschlussprojekt/.idea/
+/BackendAbschlussprojekt/.vs/
