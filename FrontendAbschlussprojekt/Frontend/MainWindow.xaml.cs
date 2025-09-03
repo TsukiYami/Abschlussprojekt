@@ -1,13 +1,4 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Frontend
 {
@@ -19,6 +10,30 @@ namespace Frontend
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void BtnMaxMin_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                WindowState = WindowState.Normal;
+                SVGMaxMin.Source = new Uri("file:///.coding/c%23/Abschlussprojekt/FrontendAbschlussprojekt/Frontend/img/ico/window-maximize.svg", UriKind.Absolute);
+            }
+            else
+            {
+                WindowState = WindowState.Maximized;
+                SVGMaxMin.Source = new Uri("file:///.coding/c%23/Abschlussprojekt/FrontendAbschlussprojekt/Frontend/img/ico/window-restore.svg", UriKind.Absolute);
+            }
+        }
+
+        private void BtnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
     }
 }

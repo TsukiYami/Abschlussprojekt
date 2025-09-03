@@ -1,0 +1,32 @@
+﻿<Page x:Class="Frontend.Page.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Frontend.Page"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage"
+      Background="#FFFFFF">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30px" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100px" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100px" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="1" x:Name="TxtSearch" Background="LightGray" Text=""/>
+        </Grid>
+        
+        <DataGrid Grid.Row="1">
+            
+        </DataGrid>
+    </Grid>
+</Page>

@@ -5,13 +5,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Frontend"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
     Title="MainWindow"
     Width="800"
     Height="450"
+    WindowStyle="None"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20px" />
+            <RowDefinition Height="30px" />
             <RowDefinition Height="30px" />
             <RowDefinition Height="*" />
             <RowDefinition Height="30px" />
@@ -26,7 +28,38 @@
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="3"
-            Background="Transparent" />
+            Background="#404060">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30px" />
+                <ColumnDefinition Width="30px" />
+                <ColumnDefinition Width="30px" />
+            </Grid.ColumnDefinitions>
+            <Button
+                x:Name="BtnClose"
+                Grid.Column="3"
+                Background="Transparent"
+                Click="BtnClose_Click">
+                <svgc:SvgViewbox Height="30" Source="\img\ico\close.svg" />
+            </Button>
+            <Button
+                x:Name="BtnMaxMin"
+                Grid.Column="2"
+                Background="Transparent"
+                Click="BtnMaxMin_Click">
+                <svgc:SvgViewbox
+                    x:Name="SVGMaxMin"
+                    Height="30"
+                    Source="\img\ico\window-maximize.svg" />
+            </Button>
+            <Button
+                x:Name="BtnMinimize"
+                Grid.Column="1"
+                Background="Transparent"
+                Click="BtnMinimize_Click">
+                <svgc:SvgViewbox Height="30" Source="\img\ico\window-minimize.svg" />
+            </Button>
+        </Grid>
         <Grid Grid.Row="2" Grid.Column="1">
             <Frame
                 x:Name="MainFrame"
