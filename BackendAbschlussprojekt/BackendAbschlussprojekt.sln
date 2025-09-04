@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendAbschlussprojekt", "BackendAbschlussprojekt\BackendAbschlussprojekt.csproj", "{67AA9547-A432-4E02-AC48-E0A194B9B62A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aufräumtaktion", "Aufräumtaktion\Aufräumtaktion.csproj", "{409EBF70-9A68-EFE0-CED0-A99B464E0037}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMail", "EMail\EMail.csproj", "{1CAF4881-50FB-5558-E815-3F0A2AF77365}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{E9838FB9-20A0-450B-8F31-DC50558BF63F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{67AA9547-A432-4E02-AC48-E0A194B9B62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67AA9547-A432-4E02-AC48-E0A194B9B62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67AA9547-A432-4E02-AC48-E0A194B9B62A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{409EBF70-9A68-EFE0-CED0-A99B464E0037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{409EBF70-9A68-EFE0-CED0-A99B464E0037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{409EBF70-9A68-EFE0-CED0-A99B464E0037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{409EBF70-9A68-EFE0-CED0-A99B464E0037}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CAF4881-50FB-5558-E815-3F0A2AF77365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CAF4881-50FB-5558-E815-3F0A2AF77365}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CAF4881-50FB-5558-E815-3F0A2AF77365}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CAF4881-50FB-5558-E815-3F0A2AF77365}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9838FB9-20A0-450B-8F31-DC50558BF63F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9838FB9-20A0-450B-8F31-DC50558BF63F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9838FB9-20A0-450B-8F31-DC50558BF63F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9838FB9-20A0-450B-8F31-DC50558BF63F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,6 +11,9 @@
     Height="450"
     WindowStyle="None"
     mc:Ignorable="d">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" />
+    </WindowChrome.WindowChrome>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30px" />
@@ -62,7 +65,7 @@
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1">
             <Frame
-                x:Name="MainFrame"
+                Name="MainFrame"
                 NavigationUIVisibility="Hidden"
                 Source="Page/Login.xaml" />
         </Grid>

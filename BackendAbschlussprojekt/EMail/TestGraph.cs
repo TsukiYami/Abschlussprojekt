@@ -1,0 +1,1 @@
+﻿string[] scopes[] { "Mail.Send" };

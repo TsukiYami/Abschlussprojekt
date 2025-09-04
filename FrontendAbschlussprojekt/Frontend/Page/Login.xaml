@@ -41,16 +41,19 @@
                     <Label Content="E-Mail" />
                 </Viewbox>
                 <Viewbox Grid.Row="1">
-                    <TextBox x:Name="TxtEMail" MinWidth="220"/>
+                    <TextBox x:Name="TxtEMail" MinWidth="220" />
                 </Viewbox>
                 <Viewbox Grid.Row="2" HorizontalAlignment="Left">
                     <Label Content="Password" />
                 </Viewbox>
                 <Viewbox Grid.Row="3">
-                    <PasswordBox x:Name="TxtPassword" MinWidth="220"/>
+                    <PasswordBox x:Name="TxtPassword" MinWidth="220" />
                 </Viewbox>
                 <Viewbox Grid.Row="4">
-                    <Button Content="Sign In" />
+                    <Button
+                        x:Name="BtnSignIn"
+                        Click="BtnSignIn_Click"
+                        Content="Sign In" />
                 </Viewbox>
             </Grid>
         </Border>
