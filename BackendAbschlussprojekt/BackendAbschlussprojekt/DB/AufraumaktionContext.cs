@@ -18,8 +18,19 @@ namespace BackendAbschlussprojekt.DB
                 login.ToTable("Login");
 
                 login.HasKey(l => l.nID);
-                login.Property(l => l.sUsername).IsRequired();
-                login.Property(l => l.sPassword).IsRequired();
+
+                login.Property(l => l.nID)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn(1, 1);
+                login.Property(l => l.sUsername)
+                .IsRequired()
+                .HasMaxLength(100)
+                .HasColumnType("nvarchar(100)");
+                login.Property(l => l.sPassword)
+                .IsRequired()
+                .HasMaxLength(100)
+                .
+                .HasColumnType("nvarchar(100)");
             });
         }
     }
