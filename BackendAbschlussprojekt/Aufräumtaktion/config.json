@@ -1,0 +1,5 @@
+﻿{
+  "Connection": {
+    "Conn": "Server=frei-129\\SQLEXPRESS;Database=Aufräumaktionerrich;User Id=sa;Password=adi28199!;TrustServerCertificate=true;"
+  }
+}

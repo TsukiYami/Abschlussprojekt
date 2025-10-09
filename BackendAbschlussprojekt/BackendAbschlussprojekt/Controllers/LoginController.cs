@@ -4,6 +4,8 @@ using Entity.DTOs.Post;
 using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using BackendAbschlussprojekt.Caches;
+using Entity.Entities;
 
 namespace BackendAbschlussprojekt.Controllers
 {
@@ -46,6 +48,22 @@ namespace BackendAbschlussprojekt.Controllers
             }
 
             return BadRequest();
+        }
+
+        [HttpPost("LogoutUser")]
+        public IActionResult Logout()
+        {
+            string sSessiontoken = Request.Headers[RequestValues.HEADER_GUID];
+            UserCache.RemoveLoginFromCache(Guid.Parse(sSessiontoken));
+
+            return BadRequest();
+        }
+
+        [HttpDelete("DeleteUser/{nID}")]
+        public IActionResult DeleteUser(long nID)
+        {
+            LoginEntity oEntity = m_oLoginService.GetByID(nID);
+            return BadRequest(oEntity);
         }
     }
 }

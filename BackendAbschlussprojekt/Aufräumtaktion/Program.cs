@@ -1,7 +1,10 @@
-using Aufräumtaktion;
-
-var builder = Host.CreateApplicationBuilder(args);
-builder.Services.AddHostedService<Worker>();
-
-var host = builder.Build();
-host.Run();
+namespace Aufräumtaktion
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            WriteVersionsInDB.WriteVersion();
+        }
+    }
+}

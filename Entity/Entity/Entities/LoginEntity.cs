@@ -1,4 +1,6 @@
-﻿namespace Entity.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Entity.Entities
 {
     public class LoginEntity
     {
@@ -15,6 +17,8 @@
             this.sPassword = sPassword;
         }
 
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long nID { get; private set; }
         public string sUsername { get; private set; }
         public string sPassword { get; private set; }

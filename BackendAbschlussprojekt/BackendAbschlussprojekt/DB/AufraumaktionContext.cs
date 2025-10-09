@@ -7,7 +7,8 @@ namespace BackendAbschlussprojekt.DB
     {
         public AufraumaktionContext(DbContextOptions<AufraumaktionContext> options) : base(options) { }
 
-        public DbSet<LoginEntity> Login { get; set; }
+        public DbSet<LoginEntity> oLogin { get; set; }
+        public DbSet<VersionEntity> oVersion { get; set; }
 
         protected override void OnModelCreating(ModelBuilder oModelBuilder)
         {
@@ -29,8 +30,21 @@ namespace BackendAbschlussprojekt.DB
                 login.Property(l => l.sPassword)
                 .IsRequired()
                 .HasMaxLength(100)
-                .
                 .HasColumnType("nvarchar(100)");
+            });
+
+            oModelBuilder.Entity<VersionEntity>(oVersion =>
+            {
+                oVersion.ToTable("Version");
+
+                oVersion.HasKey(v => v.nID);
+
+                oVersion.Property(v => v.nID)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn(1, 1);
+
+                oVersion.Property(v => v.sVersionPath)
+                .HasColumnType("TEXT");
             });
         }
     }
