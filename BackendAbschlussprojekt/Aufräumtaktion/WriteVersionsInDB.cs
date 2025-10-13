@@ -6,7 +6,6 @@ namespace Aufräumtaktion
     public class WriteVersionsInDB
     {
         private static HashSet<string> sVersionPath = new HashSet<string>();
-        private static HashSet<string> sFakturaPath = new HashSet<string>();
         private static string sConnectionString;
         private const string sQuery = "insert into Version (VersionPath, FakturaPath) VALUES (@VersionPath, @FakturaPath)";
 
@@ -15,7 +14,7 @@ namespace Aufräumtaktion
             string sJSON = File.ReadAllText("config.json");
             JObject oConfig = JObject.Parse(sJSON);
             sConnectionString = oConfig["Connection"]["Conn"].ToString();
-            (sVersionPath, sFakturaPath) = FindOutVersions.GetAllVersions();
+            sVersionPath = FindOutVersions.GetAllVersions();
         }
 
         public static void WriteVersion()

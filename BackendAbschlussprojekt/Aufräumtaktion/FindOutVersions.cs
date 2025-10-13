@@ -7,9 +7,9 @@
 
         public static HashSet<string> GetAllVersions()
         {
-            foreach (string Version in Directory.EnumerateDirectories(sPath))
+            foreach (string sVersion in Directory.EnumerateDirectories(sPath))
             {
-                sVersionNames.Add(Version);
+                sVersionNames.Add(sVersion);
             }
 
             return sVersionNames;

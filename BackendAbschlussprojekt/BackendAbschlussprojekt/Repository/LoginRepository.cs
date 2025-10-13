@@ -37,12 +37,12 @@ namespace BackendAbschlussprojekt.Repository
 
         public LoginEntity GetByID(long nID)
         {
-            return oContext.Login.Where(e => e.nID == nID).FirstOrDefault();
+            return oContext.oLogin.Where(e => e.nID == nID).FirstOrDefault();
         }
 
         public LoginEntity GetByUsername(string sUsername)
         {
-            return oContext.Login.Find(sUsername);
+            return oContext.oLogin.Find(sUsername);
         }
 
         public IEnumerable<LoginEntity> GetAll()
@@ -52,14 +52,14 @@ namespace BackendAbschlussprojekt.Repository
 
         public long Insert(LoginEntity oEntity)
         {
-            EntityEntry<LoginEntity> oEntry = oContext.Login.Add(oEntity);
+            EntityEntry<LoginEntity> oEntry = oContext.oLogin.Add(oEntity);
             oContext.SaveChanges();
             return oEntry.Entity.nID;
         }
 
         public void Update(LoginEntity oEntity)
         {
-            LoginEntity oLogin = oContext.Login.Where(e => e.nID == oEntity.nID).FirstOrDefault();
+            LoginEntity oLogin = oContext.oLogin.Where(e => e.nID == oEntity.nID).FirstOrDefault();
             oLogin = oEntity;
             oContext.Update(oLogin);
             oContext.SaveChanges();
@@ -67,8 +67,8 @@ namespace BackendAbschlussprojekt.Repository
 
         public void Delete(long nID)
         {
-            LoginEntity oLogin = oContext.Login.Where(e => e.nID == nID).FirstOrDefault();
-            oContext.Login.Remove(oLogin);
+            LoginEntity oLogin = oContext.oLogin.Where(e => e.nID == nID).FirstOrDefault();
+            oContext.oLogin.Remove(oLogin);
             oContext.SaveChanges();
         }
     }
