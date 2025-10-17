@@ -45,6 +45,9 @@ namespace BackendAbschlussprojekt.DB
 
                 oVersion.Property(v => v.sVersionPath)
                 .HasColumnType("TEXT");
+
+                oVersion.Property(v => v.bDeleteVersion)
+                .HasColumnType("BIT");
             });
         }
     }
