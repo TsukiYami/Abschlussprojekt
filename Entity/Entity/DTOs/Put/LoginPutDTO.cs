@@ -10,7 +10,7 @@
         }
 
         public long nID { get; private set; }
-        public string sUsername { get; set; }
-        public string sPassword { get; set; }
+        public string sUsername { get; private set; }
+        public string sPassword { get; private set; }
     }
 }

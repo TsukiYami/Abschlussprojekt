@@ -9,6 +9,11 @@ namespace BackendAbschlussprojekt.Repository
         protected readonly AufraumaktionContext oContext;
         private bool bDisposed = false;
 
+        public VersionRepository(AufraumaktionContext oContext)
+        {
+            this.oContext = oContext;
+        }
+
         ~VersionRepository() { Dispose(); }
 
         protected virtual void Disposed(bool bDisposing)
@@ -23,15 +28,15 @@ namespace BackendAbschlussprojekt.Repository
             this.bDisposed = true;
         }
 
-        public void Delete(long nID)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Dispose()
         {
             Disposed(true);
             GC.SuppressFinalize(this);
+        }
+
+        public void Delete(long nID)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<VersionEntity> GetAll()
