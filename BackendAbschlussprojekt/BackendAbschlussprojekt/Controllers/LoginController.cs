@@ -1,4 +1,4 @@
-﻿using BackendAbschlussprojekt.Caches;
+using BackendAbschlussprojekt.Caches;
 using BackendAbschlussprojekt.DB;
 using BackendAbschlussprojekt.Services;
 using Entity;
@@ -14,7 +14,7 @@ namespace BackendAbschlussprojekt.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private LoginService m_oLoginService;
+        private readonly LoginService m_oLoginService;
 
         public LoginController(AufraumaktionContext oContext)
         {
@@ -22,53 +22,58 @@ namespace BackendAbschlussprojekt.Controllers
         }
 
         [HttpPost("RegisterUser")]
-        public IActionResult Register(LoginPostDTO oLoginPostDTO)
+        public IActionResult Register([FromBody] LoginPostDTO oLoginPostDTO)
         {
-            string sHeaderBody = Request.Headers[RequestValues.HEADER_BODY];
-            LoginPostDTO oDTO = JsonConvert.DeserializeObject<LoginPostDTO>(sHeaderBody);
+            if (oLoginPostDTO == null)
+                return BadRequest();
 
             if (m_oLoginService.Post(oLoginPostDTO))
-            {
-                return Created();
-            }
+                return Created(string.Empty, oLoginPostDTO);
 
             return BadRequest();
         }
 
-        [HttpGet("Login")]
-        public IActionResult Login(string sUsername, string sPassword)
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody] LoginPostDTO oLoginPostDTO)
         {
-            sUsername = Request.Headers[RequestValues.HEADER_USERNAME];
-            sPassword = Request.Headers[RequestValues.HEADER_PASSWORD];
-
-            if (string.IsNullOrEmpty(sUsername) || string.IsNullOrEmpty(sPassword))
+            if (oLoginPostDTO == null
+                || string.IsNullOrEmpty(oLoginPostDTO.sUsername)
+                || string.IsNullOrEmpty(oLoginPostDTO.sPassword))
             {
                 return BadRequest();
             }
 
-            (bool, Guid?) LoginInfo = m_oLoginService.LogIn(sUsername, sPassword);
-            if (LoginInfo.Item1)
-            {
-                return Ok(LoginInfo.Item2);
-            }
+            (bool bSuccess, Guid? oSessionId) loginResult = m_oLoginService.LogIn(oLoginPostDTO.sUsername, oLoginPostDTO.sPassword);
 
-            return BadRequest();
+            if (loginResult.bSuccess)
+                return Ok(loginResult.oSessionId);
+
+            return Unauthorized();
         }
 
         [HttpPost("LogoutUser")]
         public IActionResult Logout()
         {
-            string sSessiontoken = Request.Headers[RequestValues.HEADER_GUID];
-            UserCache.RemoveLoginFromCache(Guid.Parse(sSessiontoken));
+            if (!Request.Headers.TryGetValue(RequestValues.HEADER_GUID, out var headerValue) || string.IsNullOrEmpty(headerValue))
+                return BadRequest();
 
-            return BadRequest();
+            if (!Guid.TryParse(headerValue, out var sSessiontoken))
+                return BadRequest();
+
+            UserCache.RemoveLoginFromCache(sSessiontoken);
+
+            return Ok();
         }
 
         [HttpDelete("DeleteUser/{nID}")]
         public IActionResult DeleteUser(long nID)
         {
             LoginEntity oEntity = m_oLoginService.GetByID(nID);
-            return BadRequest(oEntity);
+            if (oEntity == null)
+                return NotFound();
+
+            // If a delete method exists on the service, call it here (e.g. m_oLoginService.Delete(nID));
+            return Ok(oEntity);
         }
 
         [HttpPut("UpdatePassword")]

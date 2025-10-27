@@ -17,7 +17,7 @@ namespace BackendAbschlussprojekt.Controllers
             m_oVersionService = new VersionService(oContext);
         }
 
-        [HttpGet]
+        [HttpGet("GetAllVersions")]
         public IActionResult GetAllVersions()
         {
             if(!m_oVersionService.GetAll().IsNullOrEmpty())
