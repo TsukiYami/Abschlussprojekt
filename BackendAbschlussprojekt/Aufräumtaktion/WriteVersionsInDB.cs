@@ -7,7 +7,7 @@ namespace Aufräumtaktion
     {
         private static HashSet<string> sVersionPath = new HashSet<string>();
         private static string sConnectionString;
-        private const string sQuery = "insert into Version (VersionPath, FakturaPath) VALUES (@VersionPath, @FakturaPath)";
+        private const string sQuery = "insert into Version VersionPath VALUES @VersionPath";
 
         static WriteVersionsInDB()
         {

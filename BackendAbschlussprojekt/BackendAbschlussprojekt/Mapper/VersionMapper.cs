@@ -13,7 +13,8 @@ namespace BackendAbschlussprojekt.Mapper
             VersionGetDTO oDTO = new VersionGetDTO(
                 oEntity.nID,
                 oEntity.sVersionPath,
-                oEntity.bDeleteVersion);
+                oEntity.bDeleteVersion
+                );
 
             return oDTO;
         }
@@ -23,14 +24,19 @@ namespace BackendAbschlussprojekt.Mapper
             VersionEntity oEntity = new VersionEntity(
                 oDTO.nID,
                 oDTO.sVersionPath,
-                oDTO.bDeleteVersion);
+                oDTO.bDeleteVersion
+                );
 
             return oEntity;
         }
 
         public VersionGetDTO GetVersionDTOFromEntity(VersionEntity oEntity)
         {
-            return new VersionGetDTO(oEntity.nID, oEntity.sVersionPath, oEntity.bDeleteVersion);
+            return new VersionGetDTO(
+                oEntity.nID,
+                oEntity.sVersionPath,
+                oEntity.bDeleteVersion
+                );
         }
     }
 }

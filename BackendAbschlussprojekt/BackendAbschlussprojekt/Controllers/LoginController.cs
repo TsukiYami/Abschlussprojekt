@@ -1,11 +1,12 @@
-﻿using BackendAbschlussprojekt.DB;
+﻿using BackendAbschlussprojekt.Caches;
+using BackendAbschlussprojekt.DB;
 using BackendAbschlussprojekt.Services;
-using Entity.DTOs.Post;
 using Entity;
+using Entity.DTOs.Post;
+using Entity.DTOs.Put;
+using Entity.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using BackendAbschlussprojekt.Caches;
-using Entity.Entities;
 
 namespace BackendAbschlussprojekt.Controllers
 {
@@ -27,7 +28,9 @@ namespace BackendAbschlussprojekt.Controllers
             LoginPostDTO oDTO = JsonConvert.DeserializeObject<LoginPostDTO>(sHeaderBody);
 
             if (m_oLoginService.Post(oLoginPostDTO))
+            {
                 return Created();
+            }
 
             return BadRequest();
         }
@@ -39,7 +42,9 @@ namespace BackendAbschlussprojekt.Controllers
             sPassword = Request.Headers[RequestValues.HEADER_PASSWORD];
 
             if (string.IsNullOrEmpty(sUsername) || string.IsNullOrEmpty(sPassword))
+            {
                 return BadRequest();
+            }
 
             (bool, Guid?) LoginInfo = m_oLoginService.LogIn(sUsername, sPassword);
             if (LoginInfo.Item1)
@@ -64,6 +69,25 @@ namespace BackendAbschlussprojekt.Controllers
         {
             LoginEntity oEntity = m_oLoginService.GetByID(nID);
             return BadRequest(oEntity);
+        }
+
+        [HttpPut("UpdatePassword")]
+        public IActionResult UpdatePassword()
+        {
+            string sHeaderBody = Request.Headers[RequestValues.HEADER_BODY];
+            LoginPutDTO? oDTO = JsonConvert.DeserializeObject<LoginPutDTO>(sHeaderBody);
+
+            if (oDTO == null)
+            {
+                return BadRequest();
+            }
+
+            if (m_oLoginService.Update(oDTO))
+            {
+                return Ok();
+            }
+
+            return BadRequest();
         }
     }
 }

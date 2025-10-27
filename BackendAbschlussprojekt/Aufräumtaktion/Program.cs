@@ -4,7 +4,7 @@ namespace Aufräumtaktion
     {
         private static void Main(string[] args)
         {
-            WriteVersionsInDB.WriteVersion();
+            DeleteVersions.GetVersions();
         }
     }
 }

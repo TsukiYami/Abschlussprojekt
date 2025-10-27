@@ -1,6 +1,8 @@
 ﻿using BackendAbschlussprojekt.DB;
 using BackendAbschlussprojekt.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BackendAbschlussprojekt.Controllers
 {
@@ -18,7 +20,19 @@ namespace BackendAbschlussprojekt.Controllers
         [HttpGet]
         public IActionResult GetAllVersions()
         {
+            if(!m_oVersionService.GetAll().IsNullOrEmpty())
+            {
+                m_oVersionService.GetAll();
+                return Ok();
+            }
+            return BadRequest();
+        }
 
+        [HttpPut]
+        public IActionResult UpdateVersion(Version oVersion)
+        {
+
+            return BadRequest();
         }
     }
 }

@@ -3,6 +3,7 @@ using BackendAbschlussprojekt.DB;
 using BackendAbschlussprojekt.Mapper;
 using BackendAbschlussprojekt.Repository;
 using Entity.DTOs.Post;
+using Entity.DTOs.Put;
 using Entity.Entities;
 
 namespace BackendAbschlussprojekt.Services
@@ -55,6 +56,17 @@ namespace BackendAbschlussprojekt.Services
                 }
             }
             return (false, null);
+        }
+
+        public bool Update(LoginPutDTO oDTO)
+        {
+            LoginEntity oEntity = oMapper.PutLoginDTOToEntity(oDTO);
+            LoginEntity existing = oRepository.GetByID(oDTO.nID);
+            if (existing == null)
+                return false;
+
+            oRepository.Update(oEntity);
+            return true;
         }
     }
 }
