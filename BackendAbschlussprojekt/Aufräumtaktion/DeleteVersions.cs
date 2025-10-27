@@ -11,7 +11,7 @@ namespace Aufräumtaktion
     public class DeleteVersions
     {
         private static string sConnectionString;
-        private const string sQuery = "Select VersionPath and DeleteVersion from Version"; 
+        private const string sQuery = "Select VersionPath from Version where DeleteVersion = 1"; 
 
         private DeleteVersions()
         {
