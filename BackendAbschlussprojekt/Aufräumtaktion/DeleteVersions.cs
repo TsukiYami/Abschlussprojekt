@@ -1,38 +1,34 @@
 ﻿using Microsoft.Data.SqlClient;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aufräumtaktion
 {
     public class DeleteVersions
     {
-        private static string sConnectionString;
+        private static readonly string sConnectionString;
         private const string sQuery = "Select VersionPath from Version where DeleteVersion = 1"; 
 
-        private DeleteVersions()
+        static DeleteVersions()
         {
             string sJSON = File.ReadAllText("config.json");
             JObject oConfig = JObject.Parse(sJSON);
             sConnectionString = oConfig["Connection"]["Conn"].ToString();
         }
 
-        public static void GetVersions()
+        public static async Task GetVersions()
         {
-            using (SqlConnection oConnection = new(sConnectionString))
+            await using (SqlConnection oConnection = new(sConnectionString))
             {
-                oConnection.Open();
+                await oConnection.OpenAsync();
 
-                using (SqlCommand oCMD = new SqlCommand(sQuery, oConnection))
+                await using (SqlCommand oCMD = new SqlCommand(sQuery, oConnection))
                 {
-                    using SqlDataReader oDataReader = oCMD.ExecuteReader();
+                    await using SqlDataReader oDataReader = await oCMD.ExecuteReaderAsync();
                     if (oDataReader.HasRows)
                     {
-                        foreach (string s in oDataReader)
+                        while (await oDataReader.ReadAsync())
                         {
+                            string s = oDataReader.GetString(0);
                             Console.WriteLine(s);
                         }
                     }
