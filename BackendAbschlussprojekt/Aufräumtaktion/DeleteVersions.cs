@@ -5,6 +5,7 @@ namespace Aufräumtaktion
 {
     public class DeleteVersions
     {
+        private static List<string> vsVersions = new List<string>();
         private static readonly string sConnectionString;
         private const string sQuery = "Select VersionPath from Version where DeleteVersion = 1"; 
 
@@ -28,11 +29,14 @@ namespace Aufräumtaktion
                     {
                         while (await oDataReader.ReadAsync())
                         {
-                            string s = oDataReader.GetString(0);
-                            Console.WriteLine(s);
+                            vsVersions.Add(oDataReader.GetString(0));
                         }
                     }
                 }
+            }
+            foreach (string s in vsVersions)
+            {
+                Console.WriteLine(s);
             }
         }
     }
