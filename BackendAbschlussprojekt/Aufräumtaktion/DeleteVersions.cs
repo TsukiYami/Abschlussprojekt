@@ -39,5 +39,15 @@ namespace Aufräumtaktion
                 Console.WriteLine(s);
             }
         }
+
+        public async Task DeleteSQLUserAndDatabase()
+        {
+            private const string sQuery = "";
+        }
+
+        public async Task DeleteVersions()
+        {
+            
+        }
     }
 }
